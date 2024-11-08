@@ -1,0 +1,19 @@
+type GameState = 
+ record {
+   gameId: text;
+   isActive: bool;
+   score: nat;
+   startTime: int;
+   treasuresFound: nat;
+ };
+service : {
+  checkLocation: (nat, nat) -> (bool);
+  endGame: () -> ();
+  getGameState: () -> (opt GameState) query;
+  getHighScores: () -> (vec record {
+                              text;
+                              nat;
+                            }) query;
+  getRemainingTime: () -> (int) query;
+  startGame: () -> (text);
+}
